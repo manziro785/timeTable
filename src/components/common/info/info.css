@@ -1,0 +1,54 @@
+.box_info {
+    background: rgba(162, 162, 162, 0.384); /* Полупрозрачный белый фон */
+    backdrop-filter: blur(30px); /* Размытие фона позади элемента */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Полупрозрачная граница */
+    border-radius: 50px; /* Закругленные углы */
+    box-shadow: 0 10px 13px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    padding: 20px; /* Внутренние отступы */
+    margin: 0 90px;
+    display: flex;
+    margin-top: 15rem;
+
+    max-width: 1800px;
+}
+.btn_info {
+    font-size: 18px;
+    color: #E8C630;
+    border-radius: 19px;
+    border: 2px solid #E8C630;
+    width: fit-content;
+    padding: 7px 17px;
+    margin-top: 1.2rem;
+    margin-left: -3.5rem;
+    cursor: pointer;
+    margin-bottom: 1.4rem;
+    transition: all 0.3s ease ;
+}
+.btn_info:hover {
+    background-color: #deac2c33;
+}
+.title_info {
+    font-size: 41px;
+    font-weight: 700;
+    font-family: var(--monter);
+
+}
+.subt_info {
+    font-size: 24px;
+    color: #454545;
+    font-weight: 600;
+    margin-top: 35px;
+    width: 85%;
+    padding-bottom: 20px;
+}
+.left_info {
+    margin-left: 80px;
+    user-select: none; 
+}
+.right_info {
+    margin-right: 3rem;
+}
+.wrapper_info {
+    max-width: 1800px;
+    margin: 0 auto;
+}

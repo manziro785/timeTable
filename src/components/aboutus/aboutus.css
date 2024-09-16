@@ -1,0 +1,51 @@
+.aboutus {
+    font-family: var(--monter);
+    display: flex;
+    flex-direction: column;
+    max-width: 1800px;
+    margin: 0 auto;
+    user-select: none; 
+
+}
+.about_us_box {
+    display:flex;
+    justify-content: space-between !important;
+    margin: 0 100px;
+    padding-left: 20px;
+    max-width: 1800px;
+
+}
+.name_about {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 34px;
+    text-align: center;
+}
+.subname {
+    font-size: 25px;
+    color: #515151;
+    margin-top: 10px;
+  font-weight: 600;
+}
+.title_about {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: var(--main-font);
+
+}
+.img img {
+    width: 100%;
+}
+.btns_result {
+    display: flex;
+    margin-top: 3rem;
+    margin-left: 15rem;
+}
+.wrapper_time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}

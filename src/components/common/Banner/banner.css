@@ -1,0 +1,79 @@
+.titleBun {
+    font-size: 73px;
+    font-weight: 700;
+    font-family: var(--inter);
+    margin-top: 135px;
+}
+.leftBan {
+    margin-left: 95px;
+}
+.banner {
+    display: flex;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.rightBan {
+    position: absolute;
+    right: -6rem;
+    top: 1rem;
+    z-index: -2
+}
+.subtBun {
+    font-size: 23px;
+    font-family: var(--monter);
+    padding-left: 0.4rem;
+    color: #414141;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+.btnsBun {
+    display: flex;
+    color:#ffff;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+.btnsBun div {
+    background-color: #000;
+    font-size: 23px;
+    border-radius: 10px;
+    padding: 0 30px;
+    margin-right: 20px;
+    width: fit-content;
+    transition: background-color 0.3s ease; 
+    user-select: none; 
+
+
+}
+.btnsBun div:hover {
+    background-color: #202020;;
+}
+.rotated-image {
+    transform: rotate(95deg); /* Поворот на 90 градусов */
+    margin-left: -5px;
+    width: fit-content;
+}
+.getStarted img {
+    margin-left: -5px;
+}
+.lernMore, .getStarted {
+    display: flex;
+    cursor: pointer;
+    
+}
+p {
+    margin:15px 0;
+}
+
+.bubbles_banner {
+    position: absolute;
+    z-index: -1;
+    top:16.2rem;
+    left: 15.3rem;
+}
+.getStarted a {
+    text-decoration: none;
+    color: #ffff;
+    display: flex;
+    flex-direction: row;
+}

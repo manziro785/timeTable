@@ -1,0 +1,63 @@
+.footer {
+    padding: 40px 90px; /* Внутренние отступы */
+    margin: 0 auto;
+    max-width: 1800px;
+
+}
+.wrapper_foot {
+    background: rgba(162, 162, 162, 0.384); /* Полупрозрачный белый фон */
+    backdrop-filter: blur(30px); /* Размытие фона позади элемента */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Полупрозрачная граница */
+    box-shadow: 0 10px 13px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    margin-top: 10rem;
+
+
+}
+.left_foot {
+    font-size: 30px;
+    font-weight: 700;
+    width: 30%;
+
+}
+.footer::after {
+    display: block;
+    content: '';
+    background-color: #000;
+    height: 3px;
+    width: 100%;
+    margin-top: 3rem;
+}
+.footer_box {
+    display: flex;
+justify-content: space-between;
+}
+.right_foot {
+    display: flex;
+}
+.more_foot {
+    text-align: center;
+    margin: 0 30px;
+
+}
+.contacts_foot {
+    text-align: end;
+    margin: 0 30px;
+    margin-right: 0;
+}
+.title_foot {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+.foot_link {
+    margin-bottom: 12px;
+    color:  #474747;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    cursor:copy;
+}
+.foot_link:hover {
+    color: #1a1919;
+}
