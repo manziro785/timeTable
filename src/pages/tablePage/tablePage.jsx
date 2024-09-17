@@ -13,65 +13,43 @@ export default function TablePage() {
   const [timeSlotsPerDay, setTimeSlotsPerDay] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (spreadsheetUrl && days && timeSlotsPerDay) {
-  //     const data = {
-  //       spreadsheet_url: spreadsheetUrl,
-  //       days: parseInt(days, 10),
-  //       time_slots_per_day: parseInt(timeSlotsPerDay, 10)
-  //     };
-
-  //     axios.post('http://127.0.0.1:8000/generate-timetable/', data, {
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
-  //       .then(response => {
-  //         console.log('Schedule generated:', response.data);
-  //         setIsModalOpen(true);
-  //       })
-  //       .catch(error => {
-  //         console.error('Error:', error);
-  //         alert('An error occurred while generating the schedule.');
-  //       });
-  //   } else {
-  //     alert('Please fill out all fields!');
-  //   }
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (spreadsheetUrl && days && timeSlotsPerDay) {
       const data = {
-        spreadsheet_url: spreadsheetUrl,
+        spreadsheet_url: encodeURIComponent(spreadsheetUrl),
         days: parseInt(days, 10),
-        time_slots_per_day: parseInt(timeSlotsPerDay, 10) 
-
+        time_slots_per_day: parseInt(timeSlotsPerDay, 10)
       };
-      console.log(data)
-
+  
+      console.log(data); // Проверка данных
   
       axios.post('http://127.0.0.1:8000/generate-timetable/', data, {
         headers: {
           'Content-Type': 'application/json'
         }
-        
       })
-            console.log(data)
-
         .then(response => {
           console.log('Schedule generated:', response.data);
           setIsModalOpen(true);
         })
         .catch(error => {
-          console.error('Error:', error);
+          if (error.response) {
+            // Сервер ответил с кодом состояния, отличным от 2xx
+            console.error('Error response:', error.response.data);
+            console.error('Status code:', error.response.status);
+            console.error('Headers:', error.response.headers);
+          } else if (error.request) {
+            // Запрос был сделан, но ответ не был получен
+            console.error('Error request:', error.request);
+          } else {
+            // Произошла ошибка при настройке запроса
+            console.error('Error message:', error.message);
+          }
           alert('An error occurred while generating the schedule.');
         });
-    } else {
-      alert('Please fill out all fields!');
-    }
-  };
-  
+      }};        
+    
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -126,11 +104,11 @@ export default function TablePage() {
             <div className="btn_modal" onClick={openModal}>
               Rules
             </div>
-            <NavLink to = '/result'>
+            {/* <NavLink to = '/result'> */}
           <div className="btn_subm">
             <button type="submit">Generate Schedule</button>
             </div>
-            </NavLink>
+            {/* </NavLink> */}
           </div>
           {/* </div> */}
         </form>
@@ -188,112 +166,3 @@ Avoid errors and duplication.</div>
   );
 }
 
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import '../tablePage/tablePage.css';
-// import Header2 from '../../components/header2/header2';
-// import Footer from '../../components/footer/footer';
-
-// export default function TablePage() {
-//   const [schoolDays, setSchoolDays] = useState('');
-//   const [lessons, setLessons] = useState('');
-//   const [link, setLink] = useState('');
-//    const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (link && schoolDays && lessons) {
-//       const data = {
-//         schoolDays: schoolDays,
-//         lessons: lessons,
-//         link: link  // Отправляем ссылку
-//       };
-
-//       axios.post('http://127.0.0.1:8000/generate-timetable/', data, {
-//         headers: {
-//           'Content-Type': 'application/json'
-//         }
-//       })
-//         .then(response => {
-//           console.log('Schedule generated:', response.data);
-//         })
-//         .catch(error => {
-//           console.error('Error:', error);
-//           alert('An error occurred while generating the schedule.');
-//         });
-//     } else {
-//       alert('Please fill out all fields!');
-//     }
-//   };
-
-//   const closeModal = () => {
-//     setIsModalOpen(false);  // Закрыть модальное окно
-//   };
-
-//   const openModal = () => {
-//     setIsModalOpen(true);  // Закрыть модальное окно
-//   };
-//   return (
-//     <div>
-//       <Header2 />
-//       <div className="table_box">
-//         <div className="title-table">
-//         Create shedule here         </div>
-//         <form className="table" onSubmit={handleSubmit}>
-//           <div className="left_table">
-//             <div className="btn_modal" onClick={openModal}>
-// rules
-//             </div>
-//             <div className="input_table">
-//               Number of school days
-//               <input 
-//                 type="number" 
-//                 className='input_tab'
-//                 value={schoolDays} 
-//                 onChange={(e) => setSchoolDays(e.target.value)} 
-//                 required 
-//               />
-//             </div>
-//             <div className="input_table">
-//               Maximum number of lessons
-//               <input 
-//                 type="number" 
-//                 className='input_tab'
-//                 value={lessons} 
-//                 onChange={(e) => setLessons(e.target.value)} 
-//                 required 
-//               />
-//             </div>
-//           </div>
-//           <div className="right_table">
-//             <div className="excel_file">
-//               Upload Excel file link
-//               <input 
-//                 type="text" 
-//                 onChange={(e) => setLink(e.target.value)} 
-//                 required 
-//                 className='input_tab'
-
-//                 value={link} 
-//               />
-//             </div>
-//             <div className="btn_subm">
-//               <button type="submit">generate schedule</button>
-//             </div>
-//           </div>
-//         </form>
-//       </div>
-//       {isModalOpen && (
-//         <div className="modal">
-//           <div className="modal-content">
-//             <h2>Schedule Generated</h2>
-//             <p>Your schedule has been successfully generated.</p>
-//             <button onClick={closeModal}>Close</button>
-//           </div>
-//         </div>
-//       )}
-//       <Footer />
-//     </div>
-//   );
-// }
