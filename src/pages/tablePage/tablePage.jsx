@@ -17,22 +17,28 @@ export default function TablePage() {
     e.preventDefault();
     if (spreadsheetUrl && days && timeSlotsPerDay) {
       const data = {
-        spreadsheet_url: encodeURIComponent(spreadsheetUrl),
+        spreadsheet_url: spreadsheetUrl,
         days: parseInt(days, 10),
         time_slots_per_day: parseInt(timeSlotsPerDay, 10)
       };
   
       console.log(data); // Проверка данных
+      console.log(JSON.stringify(data));
+
   
-      axios.post('http://127.0.0.1:8000/generate-timetable/', data, {
+      axios.post("http://127.0.0.1:8000/generate-timetable/", data, {
         headers: {
           'Content-Type': 'application/json'
         }
+
       })
+      
+      
         .then(response => {
           console.log('Schedule generated:', response.data);
           setIsModalOpen(true);
         })
+        
         .catch(error => {
           if (error.response) {
             // Сервер ответил с кодом состояния, отличным от 2xx
@@ -48,7 +54,8 @@ export default function TablePage() {
           }
           alert('An error occurred while generating the schedule.');
         });
-      }};        
+      }};    
+    
     
   const closeModal = () => {
     setIsModalOpen(false);
